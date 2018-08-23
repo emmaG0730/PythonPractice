@@ -1,5 +1,6 @@
 
 class Human (object):
+
 	def __init__(self, *args, **kwargs):
 		self.firstName = kwargs.setdefault('first')
 		self.lastName = kwargs.setdefault('last')
@@ -14,16 +15,19 @@ class Human (object):
 		return '%s %s' % (self.firstName, self.lastName)
 		Human.__str__ = human_str()
 
+	def human_repr(self):
+		return
+		'''Human(%s='%s',%s='%s',%s=%s,%s=%s,)'''%(
+			'first',self.firstName,
+			'last',self.lastName,
+			'height',self.height,
+			'weight',self.weight
+			)
+		Human.__repr__ = human_repr
+	
 mechlty = Human(first='David', last='Gibson', weight=78, height=1.85)
 matt = Human(first='Matt', last='Gibson', weight=88, height=1.85)
-print matt
-msg = 'studies have shown that BMI is not indaicative of health'
-def well():
-    return msg
-oldBmi= mechlty.bmi
-mechlty.bmi = well
- 
-mechlty.bmi = matt.bmi
 
-print str(matt),matt.bmi()
-print str(mechlty),mechlty.bmi()
+sis= Human(first='Ruth', last='Gibson')
+baby_sis= Human(first='Ruth', last='Gibson')
+print mechlty.__repr__(),baby_sis
